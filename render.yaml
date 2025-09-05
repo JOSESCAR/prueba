@@ -3,8 +3,8 @@ services:
     name: agro-leo-ecuador
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:server
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: gunicorn app:server --bind 0.0.0.0:$PORT --workers 2
     envVars:
-      - key: GLDAS_CSV
-        value: data/ecuador_gldas_enriquecido_solo_tierra.csv
+      - key: PYTHON_VERSION
+        value: 3.11.9
