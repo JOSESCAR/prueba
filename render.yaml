@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: agro-leo-ecuador
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:server
+    envVars:
+      - key: GLDAS_CSV
+        value: data/ecuador_gldas_enriquecido_solo_tierra.csv
